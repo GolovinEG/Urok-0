@@ -7,7 +7,7 @@ create table dbo.SKU
 (
 	ID int not null identity(1,1)
 		constraint PK_SKU_ID primary key(ID),
-	Code as N's' + ID
+	Code as 's' + cast(ID as varchar)
 		constraint UNQ_SKU_Code unique(Code),
 	Name varchar(50) not null
 );
