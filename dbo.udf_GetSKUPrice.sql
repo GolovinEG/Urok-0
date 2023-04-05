@@ -11,11 +11,8 @@ returns decimal(18, 2)
 as
 	begin
 		return 
-			(select sum(Value) as SKU_Value
-			FROM dbo.Basket
-			WHERE ID_SKU = @ID_SKU) /
-			(select sum(Quantity) as SKU_Quantity
-			FROM dbo.Basket
-			WHERE ID_SKU = @ID_SKU) 
+			(select sum(Value) / sum(Quantity)
+			from dbo.Basket
+			where ID_SKU = @ID_SKU)
 	end;
 go
