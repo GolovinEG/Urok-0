@@ -1,9 +1,9 @@
 use test;
 
-if OBJECT_ID('dbo.GetSKUPrice') is not null drop function dbo.GetSKUPrice;
+if OBJECT_ID('dbo.udf_GetSKUPrice') is not null drop function dbo.udf_GetSKUPrice;
 go
 
-create function dbo.GetSKUPrice
+create function dbo.udf_GetSKUPrice
 (
 	@ID_SKU as int
 )
