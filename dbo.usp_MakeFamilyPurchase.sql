@@ -1,9 +1,9 @@
 ﻿use test;
 
-if object_id('MakeFamilyPurchse', 'P') is not null drop proc MakeFamilyPurchse;
+if object_id('dbo.usp_MakeFamilyPurchse', 'P') is not null drop proc dbo.usp_MakeFamilyPurchse;
 go
 
-create proc MakeFamilyPurchse
+create proc dbo.usp_MakeFamilyPurchse
 	@FamilySurName as varchar(255)
 
 as
@@ -13,5 +13,5 @@ as
 											from dbo.Basket
 											where dbo.Basket.ID_Family = dbo.Family.ID)
 			where dbo.Family.SurName = @FamilySurName;
-		else print(N'Нет семьи с данной фамилией.')
+		else raiserror(N'Нет семьи с данной фамилией.', 0, 1) with nowait
 go
